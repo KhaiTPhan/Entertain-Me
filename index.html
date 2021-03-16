@@ -15,7 +15,7 @@
     <!--Adobe Fonts-->
     <link rel="stylesheet" href="https://use.typekit.net/ifi5zvx.css">
     <!--My CSS-->
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./assets/style.css">
 
     <title>EntertainMe</title>
 
@@ -25,48 +25,33 @@
     <div class="page-container">
         
         <nav class="navbar navbar-expand-lg navbar-light bg-white">
-            <div class="navbar-left">
-              <a class="navbar-brand" href="../index.html">
+            <a class="navbar-brand" href="../index.html">
               <img src="./assets/images/logo.png" alt="EntertainMe logo" style="height: 100px"/>
-              </a>
-            </div>
-            
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            </a>
+          
+            <div class="navbar-right">
+              <ul class="nav navbar-nav navbar-right">
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
                   <li class="nav-item">
                     <a class="nav-link" href="../about.html">About</a>
                   </li>
-
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-                      My movies
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#">Movie 1</a></li>
-                      <li><a class="dropdown-item" href="#">Movie 2</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Movie 3</a></li>
-                    </ul>
+                  <li class="nav-item">
+                    <a class="nav-link" href="=">My Watchlist</a>
                   </li>
-                </ul>
-                <div class="navbar-item">
-                  <form id="nav-form" method="POST">
-                      <input class="search-input" type="text" placeholder="" id="search-nav">
-                      <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
-                  </form>
-                </div>
-              </div>
+                  <li class="nav-item">
+                    <a class="nav-link" href="=">My Reviews</a>
+                  </li>
+              </ul>
             </div>
-          </nav>
+        </nav>
 
-          <div class="d-flex justify-content-center home-content">
+        <div class="d-flex justify-content-center home-content">
             <div class="flex-column">    
               <h1>Find the movie to suit your mood...</h1>
-               <img class="home-image" src="./assets/images/homepage.png" alt="homepage"/> <!--find a background image-->
-                <form id="home-form" method="POST">
+               <img class="home-image" src="./assets/images/homepage.png" alt="homepage"/> 
+                  <form id="home-form" method="POST">
                     <input class="home-search-input" type="text" placeholder="Search for a movie title" name="search-movie-home" id="search-movie-home" /> <!--search functionality-->
                     <button type="submit" class="home-button" id="home-search">Search</button>
                   </form>
@@ -75,7 +60,7 @@
 
        
     
-    </div>
+
     
 
 
