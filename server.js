@@ -1,44 +1,25 @@
-const express = require("express");
-const Sequelize = require("sequelize"); //review page
+const express = require('express');
 
-//created connection to mySQL entertainMe (review page)
-const path = "mysql://root:yourRootPassword@localhost:3306/entertainMedb";
-const sequelize = new Sequelize(path, { operatorsAliases: 0 });
-
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log("Connection established successfully.");
-  })
-  .catch((err) => {
-    console.error("Unable to connect to the database:", err);
-  })
-  .finally(() => {
-    sequelize.close();
-  });
-
-// Requiring our models for syncing
-const db = require("./app/models");
-
+// Sets up the Express App
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// Serve static content for the app from the "public" directory in the application directory.
-// app.use(express.static("./routes"));
+// Requiring our models for syncing
+const db = require('./models');
 
-// Parse application body as JSON
+// Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static("app/public"));
+// Static directory
+app.use(express.static('public'));
 
-// Import routes and give the server access to them.
-require("./app/routes/api-routes")(app);
-require("./app/routes/api-routes")(app);
+// Routes
+require('./routes/api-routes.js')(app);
+require('./routes/html-routes.js')(app);
 
-// app.use(routes);
+// Syncing our sequelize models and then starting our Express app
 
-// Start our server so that it can begin listening to client requests.
-app.listen(PORT, () =>
-  console.log(`Server listening on: http://localhost:${PORT}`)
-);
+db.sequelize.sync({ force: true }).then(() => {
+  app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
+});

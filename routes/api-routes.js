@@ -1,36 +1,60 @@
-const connection = require('../config/config.json');
+// Requiring our Todo model
+const db = require('../models');
 
 // Routes
 // =============================================================
 module.exports = (app) => {
-  // Serach Movie by title
-  app.get('/api/searchTitle', (req, res) => {
-    const dbQuery = 'SELECT title FROM movies where title = ?';
-    connection.query(dbQuery, (err, result) => {
-      if (err) throw err;
-      res.json(result);
+  // GET route for getting all of the posts
+  app.get('/api/posts/', (req, res) => {
+    db.Post.findAll({}).then((dbPost) => res.json(dbPost));
+  });
+
+  // Get route for returning posts of a specific category
+  app.get('/api/posts/category/:category', (req, res) => {
+    db.Post.findAll({ // GET * FROM posts WHERE category = req.params.category
+      where: {
+        category: req.params.category,
+      },
+    }).then((dbPost) => {
+      res.json(dbPost);
     });
   });
 
-  // Add a review
-  app.post('/api/new', (req, res) => {
-    console.log('Review Data:');
+  // Get route for retrieving a single post
+  app.get('/api/posts/:id', (req, res) => {
+    db.Post.findOne({
+      where: {
+        id: req.params.id,
+      },
+    }).then((dbPost) => res.json(dbPost));
+  });
+
+  // POST route for saving a new post
+  app.post('/api/posts', (req, res) => {
     console.log(req.body);
+    db.Post.create({
+      title: req.body.title,
+      review: req.body.review,
+      rating: req.body.rating,
+      category: req.body.category,
+    }).then((dbPost) => res.json(dbPost));
+  });
 
-    const dbQuery =
-      'INSERT INTO review (score, comment) VALUES (?)';
+  // DELETE route for deleting posts
+  app.delete('/api/posts/:id', (req, res) => {
+    db.Post.destroy({
+      where: {
+        id: req.params.id,
+      },
+    }).then((dbPost) => res.json(dbPost));
+  });
 
-    connection.query(
-      dbQuery,
-      [req.body.score, req.body.body, req.body.review],
-      (err, result) => {
-        if (err) throw err;
-        if (result) {
-          console.log('Review Successfully Saved!');
-          res.json(req.body);
-        }
-      }
-    );
+    // PUT route for updating posts
+  app.put('/api/posts', (req, res) => {
+    db.Post.update(req.body, {
+      where: {
+        id: req.body.id,
+      },
+    }).then((dbPost) => res.json(dbPost));
   });
 };
-

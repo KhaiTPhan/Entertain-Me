@@ -1,20 +1,21 @@
-// Requiring path to so we can use relative routes to our HTML files
-const path = require("path");
-const https = require("https");
+// Dependencies
+const path = require('path');
 
-module.exports = async function (app) {
-  app.get("/", (req, res) => {
+// Routes
+module.exports = (app) => {
+  // Each of the below routes just handles the HTML page that the user gets sent to.
 
-  if (req.length > 0) {
-    res.redirect("/index");
-  }
-  res.sendFile(path.join(__dirname, "../public/index.html"));
-});
-
-  app.get("/reviewList", (req, res) => {
-    if (req.reviewList) {
-      res.redirect("/reviewList");
-    }
-    res.sendFile(path.join(__dirname, "../public/reviewList.html"));
+  // index route loads view.html
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/blog.html'));
   });
-}
+
+  app.get('/cms', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/cms.html'));
+  });
+
+  // blog route loads blog.html
+  app.get('/blog', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/blog.html'));
+  });
+};
