@@ -1,4 +1,4 @@
--- Drops the blogger if it exists currently --
+-- Drops the entertain database if it exists currently --
 DROP DATABASE IF EXISTS entertain;
--- Creates the "blogger" database --
+-- Creates the "entertain" database --
 CREATE DATABASE entertain;

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Review - Express</title>
+  <title>Add Reviews</title>
   <!-- Latest compiled and minified CSS & JS -->
   <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
@@ -14,26 +14,32 @@
     <div class="row">
       <div class="row">
         <div class="col-sm-2 mt-4">
-          <a class="btn btn-light" href="/blog">Go to Completed Reviews</a>
+          <a class="btn btn-light" href="/showreview">Go to Completed Reviews</a>
         </div>
       </div>
       <div class="col-md-5 offset-md-3">
-        <form id="cms">
+        <form id="addreview">
           <div class="form-group">
-            <label for="title">Title:</label>
+            <label for="title">Movie Title:</label>
             <input type="text" class="form-control" id="title">
             <br />
             <label for="review">Review:</label>
             <textarea class="form-control" rows="10" id="review"></textarea>
             <br />
-            <label for="rating">Rating (1 to 5):</label>
+            <p>Please rate the movie with a score from 1 to 5 stars with 5 being the highest and 1 being the lowest</p>
+            <br>
+            <label for="rating">Rating:</label>
             <textarea class="form-control" rows="1" id="rating"></textarea>
+            <br>
+            <label for="author">Reviewed By:</label>
+            <textarea class="form-control" rows="1" id="author"></textarea>
             <div class="form-group">
-              <label for="category">Select Category:</label>
-              <select class="custom-select" id="category">
-                <option value="Personal">Personal</option>
-                <option value="Product Review">Product Review</option>
-                <option value="Political">Political</option>
+              <br>
+              <label for="source">Select Source:</label>
+              <select class="custom-select" id="source">
+                <option value="Streaming">Streaming</option>
+                <option value="Cinema">Cinema</option>
+                <option value="DVD">DVD</option>
               </select>
             </div>
             <br />
@@ -44,7 +50,7 @@
     </div>
   </div>
   <!-- Custom Script -->
-  <script src="js/cms.js" type="text/javascript"></script>
+  <script src="js/addreview.js" type="text/javascript"></script>
 
 </body>
 

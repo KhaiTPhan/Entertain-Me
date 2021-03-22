@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Post = sequelize.define('Post', {
+  const Review = sequelize.define('Review', {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -15,16 +15,26 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     rating: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DECIMAL,
       allowNull: false,
       validate: {
         len: [1],
+        max: 5,
+        min: 1,
       },
     },
-    category: {
-      type: DataTypes.STRING,
-      defaultValue: 'Personal',
+      author: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        validate: {
+          len: [1],
+      },  
     },
+    source: {
+      type: DataTypes.STRING,
+      defaultValue: 'Streaming',
+    }
   });
-  return Post;
+
+  return Review;
 };
